@@ -62,7 +62,7 @@ function setLang(lang) {
   localStorage.setItem('dondecabreo-lang', lang);
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (translations[lang][key] && !Array.isArray(translations[lang][key])) {
+    if (translations[lang] && translations[lang][key] && !Array.isArray(translations[lang][key])) {
       el.textContent = translations[lang][key];
     }
   });

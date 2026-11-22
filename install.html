@@ -91,6 +91,19 @@
         ? 'Cómo instalar DondeCabrero en tu teléfono' 
         : 'How to install DondeCabrero on your phone';
       document.getElementById('install-content').innerHTML = install[lang];
+      
+      const intro = document.querySelector('[data-i18n="installIntro"]');
+      const note = document.querySelector('[data-i18n="installNote"]');
+      if (intro) {
+        intro.textContent = lang === 'es'
+          ? 'Agrega DondeCabrero a tu pantalla de inicio para usarla como una app normal. No necesitas tienda de aplicaciones.'
+          : 'Add DondeCabrero to your home screen to use it like a normal app. No app store needed.';
+      }
+      if (note) {
+        note.textContent = lang === 'es'
+          ? 'Una vez instalada, ábrela desde el ícono en tu pantalla de inicio. Funciona sin conexión parcial y recibe actualizaciones automáticamente.'
+          : 'Once installed, open it from the icon on your home screen. It works with partial offline support and updates automatically.';
+      }
     }
     window.onLangChange = updateInstall;
     document.addEventListener('DOMContentLoaded', () => updateInstall());
