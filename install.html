@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cómo instalar DondeCabrero en tu teléfono</title>
+  <meta name="description" content="Guía para agregar la PWA DondeCabrero a la pantalla de inicio en Android e iPhone.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="index.html"><img src="imagine_images/Z5g5p.jpg" alt="DondeCabrero" class="logo"></a>
+      <div class="lang-switch">
+        <button data-lang="es" class="active">ES</button>
+        <button data-lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="legal" style="max-width: 800px;">
+    <a href="index.html" data-i18n="back">← Volver a DondeCabrero</a>
+    <h1 id="install-title" data-i18n="installTitle">Cómo instalar DondeCabrero en tu teléfono</h1>
+    <p data-i18n="installIntro">Agrega DondeCabrero a tu pantalla de inicio para usarla como una app normal. No necesitas tienda de aplicaciones.</p>
+
+    <div id="install-content"></div>
+
+    <p class="note" data-i18n="installNote">Una vez instalada, ábrela desde el ícono en tu pantalla de inicio. Funciona sin conexión parcial y recibe actualizaciones automáticamente.</p>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>
+        <a href="index.html" data-i18n="back">← Volver</a>
+        <a href="terms.html" data-i18n="termsLink">Términos de Uso</a>
+        <a href="privacy.html" data-i18n="privacyLink">Política de Privacidad</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const install = {
+      es: `
+        <h2>Android (Chrome)</h2>
+        <ol>
+          <li>Abre <strong>Chrome</strong> y ve a <a href="https://leche.dondecabrero.app" target="_blank" rel="noopener">leche.dondecabrero.app</a></li>
+          <li>Toca el menú de tres puntos (⋮) en la esquina superior derecha</li>
+          <li>Elige <strong>“Agregar a la pantalla de inicio”</strong> o <strong>“Instalar app”</strong></li>
+          <li>Confirma el nombre (DondeCabrero) y toca <strong>Agregar</strong> o <strong>Instalar</strong></li>
+          <li>El ícono aparecerá en tu pantalla de inicio. Ábrelo como cualquier otra app</li>
+        </ol>
+        <p><em>Si no ves la opción, asegúrate de estar usando Chrome y que la página haya cargado completamente.</em></p>
+
+        <h2 style="margin-top: 2.5rem;">iPhone (Safari)</h2>
+        <ol>
+          <li>Abre <strong>Safari</strong> (no Chrome) y ve a <a href="https://leche.dondecabrero.app" target="_blank" rel="noopener">leche.dondecabrero.app</a></li>
+          <li>Toca el botón de compartir (cuadrado con flecha hacia arriba) en la barra inferior</li>
+          <li>Desliza hacia abajo y selecciona <strong>“Agregar a pantalla de inicio”</strong></li>
+          <li>Confirma el nombre y toca <strong>Agregar</strong> en la esquina superior derecha</li>
+          <li>El ícono aparecerá en tu pantalla de inicio. Ábrelo desde ahí</li>
+        </ol>
+        <p><em>Importante: en iPhone debe ser Safari. Otros navegadores no permiten instalar PWAs correctamente.</em></p>
+      `,
+      en: `
+        <h2>Android (Chrome)</h2>
+        <ol>
+          <li>Open <strong>Chrome</strong> and go to <a href="https://leche.dondecabrero.app" target="_blank" rel="noopener">leche.dondecabrero.app</a></li>
+          <li>Tap the three-dot menu (⋮) in the top-right corner</li>
+          <li>Choose <strong>“Add to Home screen”</strong> or <strong>“Install app”</strong></li>
+          <li>Confirm the name (DondeCabrero) and tap <strong>Add</strong> or <strong>Install</strong></li>
+          <li>The icon will appear on your home screen. Open it like any other app</li>
+        </ol>
+        <p><em>If you don’t see the option, make sure you’re using Chrome and the page has fully loaded.</em></p>
+
+        <h2 style="margin-top: 2.5rem;">iPhone (Safari)</h2>
+        <ol>
+          <li>Open <strong>Safari</strong> (not Chrome) and go to <a href="https://leche.dondecabrero.app" target="_blank" rel="noopener">leche.dondecabrero.app</a></li>
+          <li>Tap the Share button (square with an arrow pointing up) in the bottom bar</li>
+          <li>Scroll down and select <strong>“Add to Home Screen”</strong></li>
+          <li>Confirm the name and tap <strong>Add</strong> in the top-right corner</li>
+          <li>The icon will appear on your home screen. Open it from there</li>
+        </ol>
+        <p><em>Important: on iPhone it must be Safari. Other browsers do not support installing PWAs properly.</em></p>
+      `
+    };
+
+    function updateInstall(lang) {
+      lang = lang || localStorage.getItem('dondecabreo-lang') || 'es';
+      document.getElementById('install-title').textContent = lang === 'es' 
+        ? 'Cómo instalar DondeCabrero en tu teléfono' 
+        : 'How to install DondeCabrero on your phone';
+      document.getElementById('install-content').innerHTML = install[lang];
+    }
+    window.onLangChange = updateInstall;
+    document.addEventListener('DOMContentLoaded', () => updateInstall());
+  </script>
+</body>
+</html>
