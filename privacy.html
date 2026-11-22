@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidad – DondeCabreo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="index.html"><img src="imagine_images/Z5g5p.jpg" alt="DondeCabreo" class="logo"></a>
+      <div class="lang-switch">
+        <button data-lang="es" class="active">ES</button>
+        <button data-lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="legal">
+    <a href="index.html" data-i18n="back">← Volver a DondeCabreo</a>
+    <h1 id="privacy-title">Política de Privacidad</h1>
+    <div id="privacy-content"></div>
+    <p class="note">Última actualización: 22 de noviembre de 2026</p>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const privacy = {
+      es: `
+        <h2>Qué datos recopilamos</h2>
+        <p>La PWA DondeCabreo utiliza datos de ubicación de forma limitada:</p>
+        <ul>
+          <li>Accedemos a tu ubicación <strong>solo mientras la app está abierta y en uso</strong>, para calcular qué cabreros están cerca o llegarán pronto.</li>
+          <li>No almacenamos tu ubicación de forma permanente ni la compartimos con terceros.</li>
+          <li>Los datos de rutas de los cabreros provienen de la App Cabrero y se usan solo para mostrar disponibilidad.</li>
+        </ul>
+        <h2>Para qué los usamos</h2>
+        <p>Únicamente para mostrarte cabreros cercanos y predicciones de llegada. No vendemos datos. No usamos publicidad de terceros.</p>
+        <h2>Almacenamiento</h2>
+        <p>Los datos de ubicación de usuarios se usan en tiempo real y no se retienen después de cerrar la app. La información de rutas de cabreros se almacena en nuestros servidores (actualmente en infraestructura de Cloudflare / GitHub).</p>
+        <h2>Tus derechos</h2>
+        <p>Puedes dejar de compartir tu ubicación en cualquier momento desde la configuración de tu dispositivo o desinstalando/cerrando la PWA.</p>
+        <h2>Contacto</h2>
+        <p>Para preguntas sobre privacidad: [tu email o contacto]</p>
+      `,
+      en: `
+        <h2>What data we collect</h2>
+        <p>The DondeCabreo PWA uses location data in a limited way:</p>
+        <ul>
+          <li>We access your location <strong>only while the app is open and in use</strong>, to calculate which shepherds are nearby or coming soon.</li>
+          <li>We do not permanently store your location or share it with third parties.</li>
+          <li>Shepherd route data comes from the Cabrero App and is used only to show availability.</li>
+        </ul>
+        <h2>How we use it</h2>
+        <p>Only to show you nearby shepherds and arrival predictions. We do not sell data. We do not use third-party advertising.</p>
+        <h2>Storage</h2>
+        <p>User location data is used in real time and is not retained after the app is closed. Cabrero route information is stored on our servers (currently on Cloudflare / GitHub infrastructure).</p>
+        <h2>Your rights</h2>
+        <p>You can stop sharing your location at any time from your device settings or by closing/uninstalling the PWA.</p>
+        <h2>Contact</h2>
+        <p>For privacy questions: [your email or contact]</p>
+      `
+    };
+    function updatePrivacy(lang) {
+      lang = lang || localStorage.getItem('dondecabreo-lang') || 'es';
+      document.getElementById('privacy-title').textContent = lang === 'es' ? 'Política de Privacidad' : 'Privacy Policy';
+      document.getElementById('privacy-content').innerHTML = privacy[lang];
+    }
+    window.onLangChange = updatePrivacy;
+    document.addEventListener('DOMContentLoaded', () => updatePrivacy());
+  </script>
+</body>
+</html>

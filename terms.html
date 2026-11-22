@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Términos de Uso – DondeCabreo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="index.html"><img src="imagine_images/Z5g5p.jpg" alt="DondeCabreo" class="logo"></a>
+      <div class="lang-switch">
+        <button data-lang="es" class="active">ES</button>
+        <button data-lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="legal">
+    <a href="index.html" data-i18n="back">← Volver a DondeCabreo</a>
+    <h1 id="terms-title">Términos de Uso</h1>
+    <div id="terms-content"></div>
+    <p class="note">Última actualización: 22 de noviembre de 2026</p>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const terms = {
+      es: `
+        <h2>Aceptación</h2>
+        <p>Al instalar o usar la PWA DondeCabreo, aceptas estos términos mínimos.</p>
+        <h2>Uso del servicio</h2>
+        <p>DondeCabreo es una Progressive Web App (PWA) que muestra la ubicación y predicción de rutas de cabreros (pastores de cabras que venden leche) en el área de Ciudad de Guatemala, para que los compradores puedan encontrar leche fresca cerca.</p>
+        <h2>Datos de ubicación</h2>
+        <ul>
+          <li>La PWA accede a tu ubicación solo mientras la estás usando, para mostrarte cabreros cercanos o próximos.</li>
+          <li>No almacenamos tu ubicación de forma permanente.</li>
+        </ul>
+        <h2>Responsabilidad</h2>
+        <p>El servicio es proporcionado “tal cual”. No garantizamos la exactitud de las predicciones ni la disponibilidad de los cabreros. Las transacciones de compra de leche son entre tú y el cabrero. Usa la app bajo tu propio riesgo.</p>
+        <h2>Cambios</h2>
+        <p>Podemos actualizar estos términos. El uso continuado implica aceptación.</p>
+      `,
+      en: `
+        <h2>Acceptance</h2>
+        <p>By installing or using the DondeCabreo PWA, you agree to these minimal terms.</p>
+        <h2>Use of the service</h2>
+        <p>DondeCabreo is a Progressive Web App (PWA) that shows the location and route predictions of cabreros (goat shepherds selling milk) in the Guatemala City area, so buyers can find fresh milk nearby.</p>
+        <h2>Location data</h2>
+        <ul>
+          <li>The PWA accesses your location only while you are using it, to show you nearby or upcoming shepherds.</li>
+          <li>We do not permanently store your location.</li>
+        </ul>
+        <h2>Liability</h2>
+        <p>The service is provided “as is”. We do not guarantee the accuracy of predictions or the availability of shepherds. Milk purchase transactions are between you and the cabrero. Use the app at your own risk.</p>
+        <h2>Changes</h2>
+        <p>We may update these terms. Continued use means acceptance.</p>
+      `
+    };
+    function updateTerms(lang) {
+      lang = lang || localStorage.getItem('dondecabreo-lang') || 'es';
+      document.getElementById('terms-title').textContent = lang === 'es' ? 'Términos de Uso' : 'Terms of Use';
+      document.getElementById('terms-content').innerHTML = terms[lang];
+    }
+    window.onLangChange = updateTerms;
+    document.addEventListener('DOMContentLoaded', () => updateTerms());
+  </script>
+</body>
+</html>
